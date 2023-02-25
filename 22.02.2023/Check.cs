@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace Check
 {
-    internal interface ICheck
-    {
-        void Print(Card card, float cash);
-    }
-    class ConsoleChesk : ICheck
+    class Transaction
     { 
-        public void Print(Card card, float cash)
+        public Transaction(Card card, float cash) { this.card = card; this.cash = cash; }
+        public Card card { get; set; }
+        public float cash { get; set; }
+    }
+    class ConsoleChesk
+    { 
+        public static void Print(Transaction transaction)
         {
-            Console.WriteLine($"There was a transaction in the amount of ${cash}, now there are ${card.Cash} on your card");
+            Console.WriteLine($"There was a transaction in the amount of ${transaction.cash}, now there are ${transaction.card.Cash} on your card");
         }
     }
 }
